@@ -2,6 +2,8 @@
 
 Make an element absolute positioned, element should be `display: block`
 
+[demo](http://chemzqm.github.io/absoluty/)
+
 ## Install
 
       npm i absoluty
