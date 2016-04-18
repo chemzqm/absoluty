@@ -1,3 +1,5 @@
+var detect = require('prop-detect')
+var transition = detect.transition
 var styles = require('computed-style')
 var body = document.body
 
@@ -13,6 +15,8 @@ module.exports = function (el) {
   if (el.style.position == 'absolute') throw new Error('element should not absolute positioned')
   var pel = getRelativeElement(el)
   var pos = getAbsolutePosition(el, pel)
+  var transitionProp = styles(el, transition)
+  el.style.transition = 'none'
   var orig = copy(el.style, {
     height: pos.height + 'px',
     width: pos.width + 'px',
@@ -20,6 +24,9 @@ module.exports = function (el) {
     top: pos.top + 'px',
     position: 'absolute',
     float: 'none'
+  })
+  setTimeout(function () {
+    el.style.transition = transitionProp
   })
   return function restore() {
     copy(el.style, orig)
