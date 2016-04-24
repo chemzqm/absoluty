@@ -12,8 +12,9 @@ var body = document.body
  * @api public
  */
 module.exports = function (el) {
-  if (el.style.position == 'absolute') throw new Error('element should not absolute positioned')
-  var pel = getRelativeElement(el)
+  if (!el.parentNode) return
+  var pel = getRelativeElement(el.parentNode)
+  if (!pel) return
   var pos = getAbsolutePosition(el, pel)
   var transitionProp = styles(el, transition)
   el.style.transition = 'none'
