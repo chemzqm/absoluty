@@ -1,6 +1,6 @@
 {
   "name": "absoluty",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "make element absolute positioned",
   "main": "index.js",
   "directories": {
